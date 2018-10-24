@@ -24,4 +24,5 @@ services:
     restart: always
     volumes:
     - ./src-web/wordpress/:/var/www/html/
-
+    links:
+    - db:db
