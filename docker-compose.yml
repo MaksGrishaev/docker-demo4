@@ -21,6 +21,7 @@ services:
     ports:
     - "8080:80"
     container_name: wp-web
+    restart: always
     volumes:
     - ./src-web/wordpress/:/var/www/html/
 
