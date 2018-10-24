@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: wp-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssW0rd
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+    - ./db-mysql/:/var/lib/mysql/
+
+  web:
+    depends_on:
+    - db
+    build:
+      ./build-web 
+    ports:
+    - "8080:80"
+    container_name: wp-web
+    volumes:
+    - ./src-web/wordpress/:/var/www/html/
+
